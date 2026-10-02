@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff8e9" />
+    <meta name="description" content="RevQuest：大学生也能玩的 CTF 逆向冒险学习站。" />
+    <title>RevQuest — 二进制探险岛</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="主导航">
+        <a class="brand" href="#home" aria-label="RevQuest 首页">
+          <span class="brand-mark" aria-hidden="true"><span>R</span><b>✦</b></span>
+          <span class="brand-copy"><strong>RevQuest</strong><small>二进制探险岛</small></span>
+        </a>
+
+        <div class="sidebar-section">
+          <p class="nav-label">我的探险</p>
+          <button class="nav-item active" data-view="home"><span class="nav-icon">🗺️</span><span>冒险地图</span></button>
+          <button class="nav-item" data-view="challenges"><span class="nav-icon">🧩</span><span>练习关卡</span><span class="nav-trailing" id="challenge-nav-count">04</span></button>
+          <button class="nav-item" data-view="toolbox"><span class="nav-icon">🧰</span><span>工具补给站</span></button>
+          <button class="nav-item" data-view="notebook"><span class="nav-icon">📒</span><span>我的探险手册</span></button>
+        </div>
+
+        <div class="sidebar-section route-nav">
+          <p class="nav-label">新手冒险线 <span class="live-dot"></span></p>
+          <button class="route-item selected" data-view="lesson" data-lesson="0"><span class="route-marker">1</span><span><strong>样本侦察站</strong><small>认识 Windows 程序</small></span></button>
+          <button class="route-item" data-view="lesson" data-lesson="1"><span class="route-marker">2</span><span><strong>反编译镜之森</strong><small>找到程序入口</small></span></button>
+          <button class="route-item" data-view="lesson" data-lesson="2"><span class="route-marker">3</span><span><strong>分支迷宫</strong><small>跟着判断走一走</small></span></button>
+          <button class="route-item" data-view="lesson" data-lesson="3"><span class="route-marker">4</span><span><strong>字节魔法坊</strong><small>解开 XOR 小把戏</small></span></button>
+        </div>
+
+        <div class="buddy-card">
+          <div class="buddy-speech">嗨！我是小字节，陪你找 flag！</div>
+          <div class="buddy-avatar" aria-hidden="true"><svg viewBox="0 0 90 78"><path d="M22 27C10 4 23 0 35 22M57 21C70 0 84 7 70 31" fill="#ffcf69" stroke="#60442e" stroke-width="3" stroke-linecap="round"/><path d="M17 43C17 26 29 17 45 17s28 9 28 26v8c0 15-12 23-28 23S17 66 17 51z" fill="#ffd56f" stroke="#60442e" stroke-width="3"/><ellipse cx="35" cy="46" rx="3" ry="4" fill="#483b32"/><ellipse cx="55" cy="46" rx="3" ry="4" fill="#483b32"/><path d="M39 57q6 6 12 0" fill="none" stroke="#483b32" stroke-width="2.5" stroke-linecap="round"/><circle cx="27" cy="54" r="4" fill="#ff9e95"/><circle cx="63" cy="54" r="4" fill="#ff9e95"/><path d="M28 28q17-12 34 0" fill="none" stroke="#fff0b6" stroke-width="4" stroke-linecap="round"/></svg><span class="buddy-spark">✦</span></div>
+          <small>每天进步一点点就很棒！</small>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="profile-avatar">L</div>
+          <div class="profile-copy"><strong>冒险新手</strong><small>正在升级中 ✨</small></div>
+          <span class="profile-menu">•••</span>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>我的探险</span><span class="crumb-slash">›</span><strong id="breadcrumb-current">冒险地图</strong></div>
+          <div class="topbar-meta"><span class="xp-pill">⭐ <span id="xp-count">0</span> XP</span><span class="level-pill">LV.1</span><button class="icon-button" id="reset-progress" title="重置学习进度" aria-label="重置学习进度">↻</button></div>
+        </header>
+        <div id="app" class="page-content" tabindex="-1"></div>
+        <footer class="page-footer"><span>REVQUEST <b>✦</b> LEARN · EXPLORE · LEVEL UP</span><span>仅用于授权的 CTF 教学与练习</span></footer>
+      </main>
+    </div>
+    <div id="sparkles" class="sparkles" aria-hidden="true"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <dialog id="reset-dialog" class="modal">
+      <form method="dialog" class="modal-card">
+        <div class="modal-icon">🧹</div>
+        <h2>重新开始探险？</h2>
+        <p>会清除已完成的关卡和探险笔记。</p>
+        <div class="modal-actions"><button class="button button-quiet" value="cancel">再想想</button><button class="button button-danger" value="confirm">重新出发！</button></div>
+      </form>
+    </dialog>
+  </body>
+</html>
